@@ -1,7 +1,9 @@
 package pl.wsb.fitnesstracker.user.api;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface UserProvider {
 
@@ -29,5 +31,15 @@ public interface UserProvider {
      * @return An {@link Optional} containing the all users,
      */
     List<User> findAllUsers();
+
+
+    /**
+     * Retrieves all users who were born before the specified date.
+     *
+     * @param date the cutoff {@link LocalDate}; users with birthdates before this date will be returned
+     * @return a {@link Set} of {@link User} entities older than the given date
+     */
+    Set<User> getUsersOlderThan(LocalDate date);
+
 
 }
