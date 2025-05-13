@@ -18,6 +18,7 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
     private final TrainingRepository trainingRepository;
     private final UserRepository userRepository;
 
+    // TODO KN Do i need this?
     @Override
     public Optional<User> getTrainingById(final Long trainingId) {
         throw new UnsupportedOperationException("Not finished yet");

@@ -19,10 +19,35 @@ public interface TrainingProvider {
      */
     Optional<User> getTrainingById(Long trainingId);
 
+    /**
+     * Retrieves all training sessions for a specific user.
+     *
+     * @param userId the ID of the user whose trainings should be retrieved
+     * @return a set of {@link Training} sessions associated with the given user ID
+     */
     Set<Training> getAllTrainingsByUserId(Long userId);
-    Set<Training> getAllTrainingsAfterDate(Date date);
-    Set<Training> getAllTrainingsByActivityType(ActivityType activityType);
-    List<Training> getAllTrainings();
 
+    /**
+     * Retrieves all training sessions that ended after the specified date.
+     *
+     * @param date the date after which training sessions should be included
+     * @return a set of {@link Training} sessions that ended after the given date
+     */
+    Set<Training> getAllTrainingsAfterDate(Date date);
+
+    /**
+     * Retrieves all training sessions for a specific activity type.
+     *
+     * @param activityType the type of activity (e.g., RUNNING, CYCLING) to filter trainings
+     * @return a set of {@link Training} sessions matching the specified activity type
+     */
+    Set<Training> getAllTrainingsByActivityType(ActivityType activityType);
+
+    /**
+     * Retrieves all training sessions stored in the system.
+     *
+     * @return a list of all {@link Training} sessions
+     */
+    List<Training> getAllTrainings();
 
 }
