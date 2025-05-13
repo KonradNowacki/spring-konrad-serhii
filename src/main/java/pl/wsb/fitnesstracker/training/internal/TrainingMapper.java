@@ -8,8 +8,8 @@ import pl.wsb.fitnesstracker.user.api.UserDto;
 @Component
 class TrainingMapper {
 
-    public TrainingDto toDto(Training entity) {
-        return new TrainingDto(
+    public TrainingResponseDto toDto(Training entity) {
+        return new TrainingResponseDto(
                 entity.getId(),
                 toUserDto(entity.getUser()),
                 entity.getStartTime(),
@@ -20,31 +20,32 @@ class TrainingMapper {
         );
     }
 
-    public Training toEntity(TrainingDto dto) {
-        return new Training(
-                toUserEntity(dto.user()),
-                dto.startTime(),
-                dto.endTime(),
-                dto.activityType(),
-                dto.distance(),
-                dto.averageSpeed()
-        );
-    }
+//    public Training toEntity(TrainingDto dto) {
+//        return new Training(
+//                toUserEntity(dto.user()),
+//                dto.startTime(),
+//                dto.endTime(),
+//                dto.activityType(),
+//                dto.distance(),
+//                dto.averageSpeed()
+//        );
+//    }
 
     private UserDto toUserDto(User user) {
-        return new UserDto(user.getId(),
+        return new UserDto(
+                user.getId(),
                 user.getFirstName(),
                 user.getLastName(),
                 user.getBirthdate(),
                 user.getEmail());
     }
-
-    private User toUserEntity(UserDto userDto) {
-        return new User(
-                userDto.firstName(),
-                userDto.lastName(),
-                userDto.birthdate(),
-                userDto.email());
-    }
+//
+//    private User toUserEntity(UserDto userDto) {
+//        return new User(
+//                userDto.firstName(),
+//                userDto.lastName(),
+//                userDto.birthdate(),
+//                userDto.email());
+//    }
 
 }
