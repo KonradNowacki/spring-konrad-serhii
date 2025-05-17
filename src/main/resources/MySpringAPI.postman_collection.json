@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "3f3c6202-95db-4c06-825f-05385ced0525",
+		"name": "MySpringAPI",
+		"description": "Zestaw zapytań do testowania API użytkowników",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45046025"
+	},
+	"item": [
+		{
+			"name": "GET all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/users?=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/users/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET users by email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/users/email?email=Ethan.Taylor@domain.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"users",
+						"email"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "Ethan.Taylor@domain.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET users older than date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/users/older/:date",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"users",
+						"older",
+						":date"
+					],
+					"variable": [
+						{
+							"key": "date",
+							"value": "1996-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST create user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 11,\r\n    \"firstName\": \"David\",\r\n    \"lastName\": \"Blaine\",\r\n    \"birthdate\": \"2025-01-01\",\r\n    \"email\": \"David.Blaine@domain.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 11,\r\n    \"firstName\": \"David\",\r\n    \"lastName\": \"Blaine\",\r\n    \"birthdate\": \"2005-01-01\",\r\n    \"email\": \"David.Blaine@domain.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/users/:Id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"users",
+						":Id"
+					],
+					"variable": [
+						{
+							"key": "Id",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/users/:Id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"users",
+						":Id"
+					],
+					"variable": [
+						{
+							"key": "Id",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all trainings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/trainings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"trainings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET trainings by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/trainings/:Id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"trainings",
+						":Id"
+					],
+					"variable": [
+						{
+							"key": "Id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET trainings finished after date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/trainings/finished/:afterDate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"trainings",
+						"finished",
+						":afterDate"
+					],
+					"variable": [
+						{
+							"key": "afterDate",
+							"value": "2024-01-19"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET trainings by activityType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/trainings/activityType?activityType=RUNNING",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"trainings",
+						"activityType"
+					],
+					"query": [
+						{
+							"key": "activityType",
+							"value": "RUNNING"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST create training",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 13,\r\n    \"startTime\": \"2024-01-16T17:00:00.000+00:00\",\r\n    \"endTime\": \"2024-01-16T18:30:00.000+00:00\",\r\n    \"activityType\": \"RUNNING\",\r\n    \"distance\": 12.3,\r\n    \"averageSpeed\": 9.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/trainings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"trainings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update training",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": 1,\r\n  \"startTime\": \"2025-05-18T09:00:00.000+02:00\",\r\n  \"endTime\":   \"2025-05-18T10:00:00.000+02:00\",\r\n  \"activityType\": \"CYCLING\",\r\n  \"distance\": 15.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/trainings/:trainingId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"trainings",
+						":trainingId"
+					],
+					"variable": [
+						{
+							"key": "trainingId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
