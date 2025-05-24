@@ -22,12 +22,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     }
 
     /**
-     * Finds all users born after the specified date.
+     * Finds all users born before the specified date.
      *
-     * @param birthdateAfter the {@link LocalDate} after which users were born
-     * @return a {@link Set} of {@link User} entities with birthdates after the given date
+     * @param birthdateBefore the {@link LocalDate} before which users were born
+     * @return a {@link Set} of {@link User} entities with birthdates before the given date
      */
-    Set<User> findByBirthdateAfter(LocalDate birthdateAfter);
+    Set<User> findByBirthdateBefore(LocalDate birthdateBefore);
 
     /**
      * Finds a user by email address, ignoring case.

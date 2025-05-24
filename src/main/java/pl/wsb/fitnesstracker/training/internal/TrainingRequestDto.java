@@ -1,5 +1,7 @@
 package pl.wsb.fitnesstracker.training.internal;
 
+import pl.wsb.fitnesstracker.training.api.ActivityType;
+
 import java.util.Date;
 
 /**

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import pl.wsb.fitnesstracker.training.api.ActivityType;
 import pl.wsb.fitnesstracker.training.api.Training;
 
 import java.util.Date;

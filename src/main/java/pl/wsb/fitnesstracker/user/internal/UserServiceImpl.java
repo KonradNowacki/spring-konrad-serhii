@@ -59,7 +59,7 @@ class UserServiceImpl implements UserService, UserProvider {
 
     @Override
     public Set<User> getUsersOlderThan(final LocalDate date) {
-        return userRepository.findByBirthdateAfter(date);
+        return userRepository.findByBirthdateBefore(date);
     }
 
     @Override

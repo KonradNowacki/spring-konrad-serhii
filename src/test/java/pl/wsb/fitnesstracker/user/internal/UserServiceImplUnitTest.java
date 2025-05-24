@@ -149,14 +149,14 @@ public class UserServiceImplUnitTest {
 
         final LocalDate exampleDate = LocalDate.of(2000, 10, 10);
 
-        when(userRepository.findByBirthdateAfter(exampleDate)).thenReturn(Set.of(exampleUser));
+        when(userRepository.findByBirthdateBefore(exampleDate)).thenReturn(Set.of(exampleUser));
 
         // when
         final Set<User> result = userService.getUsersOlderThan(exampleDate);
 
         // then
         Assertions.assertEquals(Set.of(exampleUser), result);
-        verify(userRepository).findByBirthdateAfter(exampleDate);
+        verify(userRepository).findByBirthdateBefore(exampleDate);
     }
 
 }

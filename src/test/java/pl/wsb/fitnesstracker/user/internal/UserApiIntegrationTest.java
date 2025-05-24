@@ -103,40 +103,19 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 .andExpect(jsonPath("$[0].email").value(user1.getEmail()));
     }
 
-// KN: Zły test, user1 jest młodszy niż {time} a oczekujemy jego danych
-
-//    @Test
-//    void shouldReturnAllUsersOlderThan_whenGettingAllUsersOlderThan() throws Exception {
-//        User user1 = existingUser(generateUserWithDate(LocalDate.of(2000, 8, 11)));
-//        existingUser(generateUserWithDate(LocalDate.of(2024, 8, 11)));
-//
-//
-//        mockMvc.perform(get("/v1/users/older/{time}", LocalDate.of(2024, 8, 10)).contentType(MediaType.APPLICATION_JSON))
-//                .andDo(log())
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$").isArray())
-//                .andExpect(jsonPath("$[0].firstName").value(user1.getFirstName()))
-//                .andExpect(jsonPath("$[0].lastName").value(user1.getLastName()))
-//                .andExpect(jsonPath("$[0].birthdate").value(ISO_DATE.format(user1.getBirthdate())))
-//
-//                .andExpect(jsonPath("$[1]").doesNotExist());
-//    }
-
-
-    // Poprawiony test z wyżej
     @Test
     void shouldReturnAllUsersOlderThan_whenGettingAllUsersOlderThan() throws Exception {
         User user1 = existingUser(generateUserWithDate(LocalDate.of(2000, 8, 11)));
-        User user2 = existingUser(generateUserWithDate(LocalDate.of(2024, 8, 11)));
+        existingUser(generateUserWithDate(LocalDate.of(2024, 8, 11)));
 
 
         mockMvc.perform(get("/v1/users/older/{time}", LocalDate.of(2024, 8, 10)).contentType(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
-                .andExpect(jsonPath("$[0].firstName").value(user2.getFirstName()))
-                .andExpect(jsonPath("$[0].lastName").value(user2.getLastName()))
-                .andExpect(jsonPath("$[0].birthdate").value(ISO_DATE.format(user2.getBirthdate())))
+                .andExpect(jsonPath("$[0].firstName").value(user1.getFirstName()))
+                .andExpect(jsonPath("$[0].lastName").value(user1.getLastName()))
+                .andExpect(jsonPath("$[0].birthdate").value(ISO_DATE.format(user1.getBirthdate())))
 
                 .andExpect(jsonPath("$[1]").doesNotExist());
     }
