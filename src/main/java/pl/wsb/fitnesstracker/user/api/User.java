@@ -3,8 +3,11 @@ package pl.wsb.fitnesstracker.user.api;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
+import pl.wsb.fitnesstracker.training.api.Training;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -32,6 +35,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Training> trainings;
+
     public User(
             final String firstName,
             final String lastName,
@@ -42,6 +48,7 @@ public class User {
         this.lastName = lastName;
         this.birthdate = birthdate;
         this.email = email;
+        this.trainings = new HashSet<>();
     }
 
 }

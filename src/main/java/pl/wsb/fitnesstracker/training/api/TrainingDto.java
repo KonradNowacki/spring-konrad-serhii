@@ -1,7 +1,6 @@
-package pl.wsb.fitnesstracker.training.internal;
+package pl.wsb.fitnesstracker.training.api;
 
 import jakarta.annotation.Nullable;
-import pl.wsb.fitnesstracker.training.api.ActivityType;
 import pl.wsb.fitnesstracker.user.api.UserDto;
 
 import java.util.Date;
@@ -18,7 +17,7 @@ import java.util.Date;
  * @param distance     the total distance covered in kilometers
  * @param averageSpeed the average speed in kilometers per hour
  */
-record TrainingDto(
+public record TrainingDto(
         @Nullable Long id,
         UserDto user,
         Date startTime,
