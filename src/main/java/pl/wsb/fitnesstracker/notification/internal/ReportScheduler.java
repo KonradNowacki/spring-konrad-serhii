@@ -33,11 +33,7 @@ class ReportScheduler {
 //    @Scheduled(cron = "0 0 8 1 * *")
     @Scheduled(cron = "0/10 * * * * *")             // Job run every 10s for testing purposes
     public void runMonthlyReport() {
-
-        // Simulating id of the logged-in user
-        final Long userId = 1L;
-
-        reportService.generateAndSendReport(userId);
+        reportService.generateAndSendReport();
     }
 
 }

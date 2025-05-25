@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 import pl.wsb.fitnesstracker.mail.api.EmailDto;
 import pl.wsb.fitnesstracker.mail.api.EmailSender;
 import pl.wsb.fitnesstracker.user.api.User;
-import pl.wsb.fitnesstracker.user.api.UserNotFoundException;
 import pl.wsb.fitnesstracker.user.api.UserRepository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,31 +26,36 @@ class ReportServiceImpl implements ReportService {
     private final NotificationMapper notificationMapper;
 
     @Override
-    public void generateAndSendReport(Long userId) {
+    public void generateAndSendReport() {
 
-        final User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        final List<User> users = userRepository.findAll();
 
-        final Date oneMonthAgo = Date.from(LocalDate.now().minusMonths(1)
+        final Date oneMonthAgo = Date.from(LocalDate.now().minusMonths(24)
                 .atStartOfDay(ZoneId.systemDefault())
                 .toInstant());
 
-        final Set<ReportTrainingDto> trainingsByUserId = user.getTrainings()
-                .stream()
-                .filter(t -> t.getStartTime().after(oneMonthAgo))
-                .map(notificationMapper::toReportTrainingDto)
-                .collect(Collectors.toSet());
+        for (var user : users) {
 
-        final MonthlyReportDto monthlyReportDto = new MonthlyReportDto(
-                trainingsByUserId.size(),
-                trainingsByUserId
-        );
+            final Set<ReportTrainingDto> trainingsByUserId = user.getTrainings()
+                    .stream()
+                    .filter(t -> t.getStartTime().after(oneMonthAgo))
+                    .map(notificationMapper::toReportTrainingDto)
+                    .collect(Collectors.toSet());
 
-        final EmailDto emailDto = new EmailDto(
-                user.getEmail(),
-                "Monthly Trainings Summary!",
-                monthlyReportDto.toString()
-        );
+            final MonthlyReportDto monthlyReportDto = new MonthlyReportDto(
+                    trainingsByUserId.size(),
+                    trainingsByUserId
+            );
 
-        emailSender.send(emailDto);
+            final EmailDto emailDto = new EmailDto(
+                    user.getEmail(),
+                    "Monthly Trainings Summary!",
+                    monthlyReportDto.toString()
+            );
+
+            emailSender.send(emailDto);
+        }
+
+
     }
 }

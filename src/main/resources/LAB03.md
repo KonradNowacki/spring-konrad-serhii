@@ -54,6 +54,12 @@ miesiącu.
 - [x] raport wysyłany jest za pomocą e-mail z podsumowaniem do każdego użytkownika, ile treningów ma zarejestrowanych
   łącznie
 
+
+
+
+
+
+
 ## ZADANIE 3 (opcjonalne). Sieciowe API do operacji typu CRUD na Statistics (bez użycia rekordów)
 
 ### Potrzeba biznesowa

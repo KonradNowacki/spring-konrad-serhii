@@ -22,6 +22,6 @@ interface ReportService {
      * @throws UserNotFoundException if no user is found with the provided ID
      * @throws EmailSendException if an error occurs while sending the report email
      */
-    void generateAndSendReport(Long userId);
+    void generateAndSendReport();
 
 }
